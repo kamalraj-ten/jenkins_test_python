@@ -9,7 +9,10 @@ if __name__ == '__main__':
     print(f"Count: {i}")
     
   # trying to pass or fail randomly
-  passed = [True, False]
-  if not random.choice( passed ):
+  passed = [True, False, None]
+  res = random.choice( passed )
+  if res is None:
+    sys.exit(2)
+  elif not res:
     # exit with a string val
     sys.exit("Failed")
