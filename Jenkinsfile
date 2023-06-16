@@ -1,4 +1,5 @@
 def notifyGhcUrls = "https://chat.googleapis.com/v1/spaces/AAAAMALGnVM/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=ZuiOaogTrPoZp_0lGSwp-o2poPlpcfQDk9ijkzN8oz4"
+def dontNotify = true
 
 pipeline {
     agent any
@@ -12,9 +13,12 @@ pipeline {
             steps {
                 echo "Building ..."
                 script {
-                    def BUILD_RES = sh (script: "python3 index.py", returnStatus: true)
+                    BUILD_RES = sh (script: "python3 index.py", returnStatus: true)
                 }
                 echo "Return status : ${BUILD_RES}"
+                if BUILD_RES == 2 {
+                    dontNotify = true
+                }
             }
         }
         
@@ -40,8 +44,7 @@ pipeline {
     post {
         always {
             script {
-                if (notifyGhcUrls != "") {
-                    echo "BUILD RESULT: ${BUILD_RESULT}"
+                if (notifyGhcUrls != "" && !dontNotify) {
                     googlechatnotification url: "${notifyGhcUrls}",
                                            message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} notification build result ${BUILD_RES} (<${env.BUILD_URL}|Open>)"
                 }
