@@ -54,6 +54,11 @@ pipeline {
                 } else {
                     echo "Notify"
                 }
+                
+                // trying to get the result of post.py
+                RESULT = sh( script:"python3 post.py", returnStatus:true )
+                echo "The return value of post.py is ${RESULT}"
+                
                 if (notifyGhcUrls != "" && !dontNotify) {
                     googlechatnotification url: "${notifyGhcUrls}",
                                            message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} notification build result ${BUILD_RES} (<${env.BUILD_URL}|Open>)"
