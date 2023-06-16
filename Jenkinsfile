@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building ..."
-                BUILD_RES = sh (script: "python3 index.py", returnStatus: true)
+                def BUILD_RES = sh (script: "python3 index.py", returnStatus: true)
                 echo "Return status : ${BUILD_RES}"
             }
         }
