@@ -16,7 +16,7 @@ pipeline {
                     BUILD_RES = sh (script: "python3 index.py", returnStatus: true)
                 }
                 echo "Return status : ${BUILD_RES}"
-                if BUILD_RES == 2 {
+                if (BUILD_RES == 2) {
                     dontNotify = true
                 }
             }
