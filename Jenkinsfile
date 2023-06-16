@@ -9,9 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building ..."
-                sh '''
-                echo "Hello this is build..."
-                '''   
+                sh "python3 index.py"
             }
         }
         
