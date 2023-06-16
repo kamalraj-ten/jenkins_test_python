@@ -56,7 +56,7 @@ pipeline {
                 }
                 
                 // trying to get the result of post.py
-                RESULT = sh( script:"python3 post.py", returnStatus:true )
+                RESULT = sh( script:"python3 post.py", returnStdout:true ).trim()
                 echo "The return value of post.py is ${RESULT}"
                 
                 if (notifyGhcUrls != "" && !dontNotify) {
