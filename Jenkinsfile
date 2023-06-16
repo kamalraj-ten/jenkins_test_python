@@ -16,6 +16,9 @@ pipeline {
                     BUILD_RES = sh (script: "python3 index.py", returnStatus: true)
                     if (BUILD_RES == 2) {
                         dontNotify = true
+                        exit 1
+                    } else if (BUILD_RES == 1) {
+                        exit 1
                     }
                 }
                 echo "Return status : ${BUILD_RES}"
