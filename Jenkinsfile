@@ -14,11 +14,11 @@ pipeline {
                 echo "Building ..."
                 script {
                     BUILD_RES = sh (script: "python3 index.py", returnStatus: true)
+                    if (BUILD_RES == 2) {
+                        dontNotify = true
+                    }
                 }
                 echo "Return status : ${BUILD_RES}"
-                if (BUILD_RES == 2) {
-                    dontNotify = true
-                }
             }
         }
         
