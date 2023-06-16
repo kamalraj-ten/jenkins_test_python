@@ -17,8 +17,10 @@ pipeline {
                     if (BUILD_RES == 2) {
                         dontNotify = true
                         currentBuild.result = "FAILURE"
+                        sh "exit 1"
                     } else if (BUILD_RES == 1) {
                         currentBuild.result = "FAILURE"
+                        sh "exit 1"
                     }
                 }
                 echo "Return status : ${BUILD_RES}"
