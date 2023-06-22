@@ -60,10 +60,10 @@ pipeline {
                 RESULT = sh( script:"python3 post.py", returnStdout:true ).trim()
                 echo "The return value of post.py is ${RESULT}"
                 
-                if (notifyGhcUrls != "" && !dontNotify) {
-                    googlechatnotification url: "${notifyGhcUrls}",
-                                           message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} notification build result ${BUILD_RES} (<${env.BUILD_URL}|Open>)"
-                }
+//                 if (notifyGhcUrls != "" && !dontNotify) {
+//                     googlechatnotification url: "${notifyGhcUrls}",
+//                                            message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} notification build result ${BUILD_RES} (<${env.BUILD_URL}|Open>)"
+//                 }
                 if (notifyEmailAddresses != "" && !dontNotify) {
                     mail to: "${notifyEmailAddresses}",
                          subject: "Jenkins: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
