@@ -50,15 +50,15 @@ pipeline {
     post {
         always {
             script {
-                if (dontNotify) {
-                    echo "Dont Notify"
-                } else {
-                    echo "Notify"
-                }
+//                 if (dontNotify) {
+//                     echo "Dont Notify"
+//                 } else {
+//                     echo "Notify"
+//                 }
                 
-                // trying to get the result of post.py
-                RESULT = sh( script:"python3 post.py", returnStdout:true ).trim()
-                echo "The return value of post.py is ${RESULT}"
+//                 // trying to get the result of post.py
+//                 RESULT = sh( script:"python3 post.py", returnStdout:true ).trim()
+//                 echo "The return value of post.py is ${RESULT}"
                 
 //                 if (notifyGhcUrls != "" && !dontNotify) {
 //                     googlechatnotification url: "${notifyGhcUrls}",
