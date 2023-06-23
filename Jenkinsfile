@@ -48,7 +48,7 @@ pipeline {
     }
     
     post {
-        regression {
+        always {
             script {
 //                 if (dontNotify) {
 //                     echo "Dont Notify"
