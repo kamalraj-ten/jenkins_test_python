@@ -50,7 +50,7 @@ pipeline {
     post {
         always {
             script {
-                echo "This is the Number: ${params.Number}"
+                echo "This is the change number: ${params.Change}"
 //                 if (dontNotify) {
 //                     echo "Dont Notify"
 //                 } else {
