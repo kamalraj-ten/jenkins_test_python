@@ -51,6 +51,10 @@ pipeline {
         always {
             script {
                 echo "This is the change number: ${params.Change}"
+                RESULT = sh(
+                    script: "python3 getSomeOutput.py",
+                    returnStdout: true ).trim()
+                echo "${RESULT}"
 //                 if (dontNotify) {
 //                     echo "Dont Notify"
 //                 } else {
