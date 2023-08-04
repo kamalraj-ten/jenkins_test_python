@@ -70,6 +70,7 @@ pipeline {
                 echo "${PREV_CHANGE}"
                 echo "Previous step result: ${previousBuildResult}"
                 echo "${hudson.model.Result.ABORTED}"
+                echo "${hudson.model.Result.isBetterThan(previousBuildResult)}"
                 
                 RESULT = sh(
                     script: "python3 getSomeOutput.py",
