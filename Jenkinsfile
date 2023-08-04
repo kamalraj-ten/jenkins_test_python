@@ -72,7 +72,7 @@ pipeline {
                 echo "${PREV_CHANGE}"
                 echo "Previous step result: ${previousBuildResult}"
                 echo "${Result.ABORTED}"
-                isBetter = Result.fromString(currentBuild.result).isBetterThan(previousBuildResult)
+                isBetter = Result.ABORTED == "ABORTED"
                 echo "is better ? ${isBetter}"
                 
                 RESULT = sh(
