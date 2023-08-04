@@ -1,7 +1,7 @@
 def notifyGhcUrls = "https://chat.googleapis.com/v1/spaces/AAAAMALGnVM/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=ZuiOaogTrPoZp_0lGSwp-o2poPlpcfQDk9ijkzN8oz4"
 def dontNotify = false
 def notifyEmailAddresses = "kamalrajdhanakodi@gmail.com"
-def previousBuildResult = currentBuild.getPrevioudBuild().result
+def previousBuildResult = currentBuild.getPreviousBuild().result
 
 pipeline {
     agent any
