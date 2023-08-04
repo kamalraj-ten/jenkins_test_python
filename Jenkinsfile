@@ -74,6 +74,9 @@ pipeline {
                          subject: "Jenkins: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                         body: "See ${env.BUILD_URL} and notify value is ${!dontNotify}"
                 }
+
+                // check the previous build change env variable
+                echo "${currentBuild.previoudBuild.buildVariables["Change"]}"
             }
         }
     }
