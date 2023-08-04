@@ -71,7 +71,9 @@ pipeline {
 //                 }
 
                 // check the previous build change env variable
-                echo "${currentBuild.previoudBuild.buildVariables["Change"]}"
+                PREV_CHANGE = currentBuild.previoudBuild.buildVariables["Change"]
+                echo "Printing previous changenum"
+                echo "${PREV_CHANGE}"
                 
                 if (notifyEmailAddresses != "" && !dontNotify) {
                     mail to: "${notifyEmailAddresses}",
