@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        PREV_CHANGE = currentBuild.buildVariables[ 'Change' ]
+        PREV_CHANGE = ""
     }
     
     stages {
@@ -56,6 +56,7 @@ pipeline {
             script {
                 echo "This is the change number: ${params.Change}"
                 // check the previous build change env variable
+                PREV_CHANGE = "another"
                 echo "Printing previous changenum"
                 echo "${PREV_CHANGE}"
                 
