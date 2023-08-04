@@ -69,14 +69,16 @@ pipeline {
 //                     googlechatnotification url: "${notifyGhcUrls}",
 //                                            message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} notification build result ${BUILD_RES} (<${env.BUILD_URL}|Open>)"
 //                 }
+
+                // check the previous build change env variable
+                echo "${currentBuild.previoudBuild.buildVariables["Change"]}"
+                
                 if (notifyEmailAddresses != "" && !dontNotify) {
                     mail to: "${notifyEmailAddresses}",
                          subject: "Jenkins: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                         body: "See ${env.BUILD_URL} and notify value is ${!dontNotify}"
                 }
 
-                // check the previous build change env variable
-                echo "${currentBuild.previoudBuild.buildVariables["Change"]}"
             }
         }
     }
