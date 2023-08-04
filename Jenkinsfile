@@ -59,7 +59,7 @@ pipeline {
                 PREV_CHANGE = currentBuild.buildVariables["PREV_CHANGE"]
                 echo "Printing previous changenum"
                 echo "${PREV_CHANGE}"
-                echo "Previous step result: ${currentBuild.result}"
+                echo "Previous step result: ${currentBuild.getPreviousBuild()}"
                 
                 RESULT = sh(
                     script: "python3 getSomeOutput.py",
