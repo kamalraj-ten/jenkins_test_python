@@ -7,7 +7,7 @@ def previousBuildResult = getPreviousBuildResult()
 
 Result getPreviousBuildResult() {
     previousBuild = currentBuild.getPreviousBuild()
-    if ( previousBuild != null ) {
+    if ( previousBuild ) {
         return previousBuild.result
     }
     return Result.SUCCESS
