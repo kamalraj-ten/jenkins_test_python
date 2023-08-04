@@ -70,7 +70,7 @@ pipeline {
                 echo "${PREV_CHANGE}"
                 echo "Previous step result: ${previousBuildResult}"
                 echo "${hudson.model.Result.ABORTED}"
-                isBetter = currentBuild.result.isBetterThan(previousBuildResult)
+                isBetter = currentBuild.isBetterThan(previousBuildResult)
                 echo "is better ? ${isBetter}"
                 
                 RESULT = sh(
