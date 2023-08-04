@@ -5,7 +5,7 @@ def previousBuildResult = getPreviousBuildResult()
 
 hudson.model.Result getPreviousBuildResult() {
     previousBuild = currentBuild.getPreviousBuild()
-    if previousBuild != null {
+    if ( previousBuild != null ) {
         return previousBuild.result
     }
     return hudson.model.Result.SUCCESS
