@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        PREV_CHANGE = "Something"
+        PREV_CHANGE = currentBuild.buildVariables[ 'Change' ]
     }
     
     stages {
