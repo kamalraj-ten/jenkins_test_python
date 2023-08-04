@@ -52,7 +52,7 @@ pipeline {
             script {
                 echo "This is the change number: ${params.Change}"
                 // check the previous build change env variable
-                PREV_CHANGE = currentBuild.previoudBuild.buildVariables["Change"]
+                def PREV_CHANGE = currentBuild.previoudBuild.buildVariables["Change"]
                 echo "Printing previous changenum"
                 echo "${PREV_CHANGE}"
                 
