@@ -8,6 +8,10 @@ pipeline {
     triggers {
        pollSCM "H/5 * * * *"
     }
+
+    environment {
+        PREV_CHANGE = "Something"
+    }
     
     stages {
         stage('Build') {
@@ -52,7 +56,6 @@ pipeline {
             script {
                 echo "This is the change number: ${params.Change}"
                 // check the previous build change env variable
-                def PREV_CHANGE = currentBuild.getPreviousBuild().getRawBuild();
                 echo "Printing previous changenum"
                 echo "${PREV_CHANGE}"
                 
