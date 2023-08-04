@@ -1,14 +1,16 @@
+import hudson.model.Result as Result
+
 def notifyGhcUrls = "https://chat.googleapis.com/v1/spaces/AAAAMALGnVM/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=ZuiOaogTrPoZp_0lGSwp-o2poPlpcfQDk9ijkzN8oz4"
 def dontNotify = false
 def notifyEmailAddresses = "kamalrajdhanakodi@gmail.com"
 def previousBuildResult = getPreviousBuildResult()
 
-hudson.model.Result getPreviousBuildResult() {
+Result getPreviousBuildResult() {
     previousBuild = currentBuild.getPreviousBuild()
     if ( previousBuild != null ) {
         return previousBuild.result
     }
-    return hudson.model.Result.SUCCESS
+    return Result.SUCCESS
 }
 
 pipeline {
@@ -69,8 +71,8 @@ pipeline {
                 echo "Printing previous changenum"
                 echo "${PREV_CHANGE}"
                 echo "Previous step result: ${previousBuildResult}"
-                echo "${hudson.model.Result.ABORTED}"
-                isBetter = currentBuild.isBetterThan(previousBuildResult)
+                echo "${Result.ABORTED}"
+                isBetter = Result.fromString(currentBuild.result).isBetterThan(previousBuildResult)
                 echo "is better ? ${isBetter}"
                 
                 RESULT = sh(
