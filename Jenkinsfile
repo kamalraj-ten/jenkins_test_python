@@ -56,7 +56,7 @@ pipeline {
             script {
                 echo "This is the change number: ${params.Change}"
                 // check the previous build change env variable
-                PREV_CHANGE = "another"
+                PREV_CHANGE = currentBuild
                 echo "Printing previous changenum"
                 echo "${PREV_CHANGE}"
                 
