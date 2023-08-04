@@ -1,7 +1,15 @@
 def notifyGhcUrls = "https://chat.googleapis.com/v1/spaces/AAAAMALGnVM/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=ZuiOaogTrPoZp_0lGSwp-o2poPlpcfQDk9ijkzN8oz4"
 def dontNotify = false
 def notifyEmailAddresses = "kamalrajdhanakodi@gmail.com"
-def previousBuildResult = currentBuild.getPreviousBuild().result
+def previousBuildResult = getPreviousBuildResult()
+
+hudson.model.Result getPreviousBuildResult() {
+    previousBuild = currentBuild.getPreviousBuild()
+    if previousBuild != null {
+        return previousBuild.result
+    }
+    return hudson.model.Result.SUCCESS
+}
 
 pipeline {
     agent any
@@ -60,7 +68,7 @@ pipeline {
                 PREV_CHANGE = currentBuild.buildVariables["PREV_CHANGE"]
                 echo "Printing previous changenum"
                 echo "${PREV_CHANGE}"
-                echo "Previous step result: ${currentBuild.getPreviousBuild().result}"
+                echo "Previous step result: ${previousBuildResult}"
                 echo "${hudson.model.Result.ABORTED}"
                 
                 RESULT = sh(
