@@ -51,6 +51,11 @@ pipeline {
         always {
             script {
                 echo "This is the change number: ${params.Change}"
+                // check the previous build change env variable
+                PREV_CHANGE = currentBuild.previoudBuild.buildVariables["Change"]
+                echo "Printing previous changenum"
+                echo "${PREV_CHANGE}"
+                
                 RESULT = sh(
                     script: "python3 getSomeOutput.py",
                     returnStdout: true ).trim()
@@ -69,11 +74,6 @@ pipeline {
 //                     googlechatnotification url: "${notifyGhcUrls}",
 //                                            message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} notification build result ${BUILD_RES} (<${env.BUILD_URL}|Open>)"
 //                 }
-
-                // check the previous build change env variable
-                PREV_CHANGE = currentBuild.previoudBuild.buildVariables["Change"]
-                echo "Printing previous changenum"
-                echo "${PREV_CHANGE}"
                 
                 if (notifyEmailAddresses != "" && !dontNotify) {
                     mail to: "${notifyEmailAddresses}",
