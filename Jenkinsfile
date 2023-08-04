@@ -60,6 +60,7 @@ pipeline {
                 echo "Printing previous changenum"
                 echo "${PREV_CHANGE}"
                 echo "Previous step result: ${currentBuild.getPreviousBuild().result}"
+                echo "${hudson.model.Result.ABORTED}"
                 
                 RESULT = sh(
                     script: "python3 getSomeOutput.py",
