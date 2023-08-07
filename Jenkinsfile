@@ -33,7 +33,7 @@ pipeline {
                     echo "Return status : ${BUILD_RES}"
                     if (BUILD_RES == 2) {
                         dontNotify = true
-                        currentBuild.result = "ABORTED"
+                        currentBuild.result = Result.ABORTED
                         sh "exit 1"
                     } else if (BUILD_RES == 1) {
                         currentBuild.result = "FAILURE"
