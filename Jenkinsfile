@@ -74,6 +74,8 @@ pipeline {
                 echo "${Result.ABORTED}"
                 isBetter = Result.ABORTED == "ABORTED"
                 echo "is better ? ${isBetter}"
+                echo "failure equal ${Result.FAILURE == "FAILURE"}"
+                echo "Again with result obj ${Result.FAILURE == Result.FAILURE}"
                 
                 RESULT = sh(
                     script: "python3 getSomeOutput.py",
