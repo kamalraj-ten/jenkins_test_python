@@ -105,7 +105,7 @@ pipeline {
 
         changed  {
             script {
-                notify = ( Result(currentBuild.result) != Result.ABORTED )
+                notify = ( Result.fromString(currentBuild.result) != Result.ABORTED )
                 if (notify) {
                     echo "Notifying on the changed post script"
                 }
