@@ -94,11 +94,11 @@ pipeline {
 //                                            message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} notification build result ${BUILD_RES} (<${env.BUILD_URL}|Open>)"
 //                 }
                 
-                if (notifyEmailAddresses != "" && !dontNotify) {
-                    mail to: "${notifyEmailAddresses}",
-                         subject: "Jenkins: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                        body: "See ${env.BUILD_URL} and notify value is ${!dontNotify}"
-                }
+                // if (notifyEmailAddresses != "" && !dontNotify) {
+                //     mail to: "${notifyEmailAddresses}",
+                //          subject: "Jenkins: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                //         body: "See ${env.BUILD_URL} and notify value is ${!dontNotify}"
+                // }
 
             }
         }
